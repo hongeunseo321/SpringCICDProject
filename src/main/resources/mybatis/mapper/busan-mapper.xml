@@ -36,5 +36,5 @@
 		SELECT CEIL(COUNT(*)/6.0)
 		FROM busantravel
 		<include refid="where-sql"/>
-	</select>	
+	</select>
 </mapper>

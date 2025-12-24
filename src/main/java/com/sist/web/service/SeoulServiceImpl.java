@@ -12,8 +12,11 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class SeoulServiceImpl implements SeoulService{
+
+    private final BusanServiceImpl busanServiceImpl;
 	private final SeoulMapper mapper;
-	
+	private final FoodMapper fMapper;
+
 	@Override
 	public List<SeoulVO> seoulListData(Map map) {
 		// TODO Auto-generated method stub
@@ -24,6 +27,19 @@ public class SeoulServiceImpl implements SeoulService{
 	public int seoulTotalPage(Map map) {
 		// TODO Auto-generated method stub
 		return mapper.seoulTotalPage(map);
+	}
+
+	@Override
+	public SeoulVO seoulDetailData(Map map) {
+		// TODO Auto-generated method stub
+		mapper.seoulHitIncrement(map);
+		return mapper.seoulDetailData(map);
+	}
+
+	@Override
+	public List<FoodVO> foodNearData4(String address) {
+		// TODO Auto-generated method stub
+		return fMapper.foodNearData4(address);
 	}
 
 }

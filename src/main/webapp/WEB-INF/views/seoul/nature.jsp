@@ -23,16 +23,16 @@
 							<a href="#">{{vo.title}}</a>
 						</h5>
 						<p>{{vo.address}}</p>
-						<a href="#" class="blog__btn">READ MORE <span
+						<a :href="'http://localhost:8080/seoul/detail?no='+vo.no+'&type='+store.type" class="blog__btn">READ MORE <span
 							class="arrow_right"></span></a>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-12">
 				<div class="product__pagination blog__pagination">
-					<a class="nav-link" v-if="store.startPage>1" @click="store.prev(store.startPage-1)"><i class="fa fa-long-arrow-left"></i></a>
-					<a class="nav-link" v-for="i in store.range(store.startPage,store.endPage)" @click="store.pageChange(i)">{{i}}</a> 
-					<a class="nav-link" v-if="store.endPage<store.totalpage" @click="store.next(store.endPage+1)"><i class="fa fa-long-arrow-right"></i></a>
+					<a v-if="store.startPage>1" @click="store.prev(store.startPage-1)"><i class="fa fa-long-arrow-left"></i></a>
+					<a v-for="i in store.range(store.startPage,store.endPage)" @click="store.pageChange(i)">{{i}}</a> 
+					<a v-if="store.endPage<store.totalpage" @click="store.next(store.endPage+1)"><i class="fa fa-long-arrow-right"></i></a>
 				</div>
 			</div>
 		</div>

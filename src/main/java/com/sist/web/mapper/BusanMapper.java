@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.sist.web.vo.BusanVO;
+import com.sist.web.vo.SeoulVO;
 
 @Mapper
 @Repository
@@ -28,4 +31,14 @@ public interface BusanMapper {
 	</select>	
 	 */
 	public int busanTotalPage(Map map);
+	
+	
+	@Select("SELECT * FROM busantravel "
+			+ "WHREE no=#{no}")
+	public BusanVO busanDetailData(int no);
+	
+	@Update("UPDATE busantravel SET "
+			+ "hit=hit+1 "
+			+ "WHERE no=#{no}")
+	public void busanHitIncrement(int no);
 }
